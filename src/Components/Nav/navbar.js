@@ -19,7 +19,7 @@ function Nav() {
 		leave: {opacity: 0, transform: 'translateX(-100%)'}
 	});
 
-	const menuClass = 'fixed bg-white top-0 left-0 w-4/5 h-full z-50 shadow p-3';
+	const menuClass = 'fixed bg-white top-0 left-0 w-2/5 h-full z-50 shadow p-3';
 	const menuMaskClass = 'bg-black-t-50 fixed top-0 left-0 w-full h-full z-50';
 
 	return (

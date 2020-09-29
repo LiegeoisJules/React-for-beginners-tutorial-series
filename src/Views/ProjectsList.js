@@ -1,38 +1,15 @@
-import React, {useEffect, useState} from "react";
-import * as axios from "axios";
+import React from "react";
 import Loader from "../Components/Loader";
+import Card from "../Components/Card";
+import {useAxiosGet} from "../Hooks/HttpRequest";
 
 function ProjectsList() {
-	const url = `https://5f6a0569d808b90016bc0b92.mockapi.io/api/v1/real`;
-	const [products, setProducts] = useState({
-		loading: false,
-		data: null,
-		error: false
-	});
+	const url = 'https://5f6a0569d808b90016bc0b92.mockapi.io/api/v1/real?limit=10&page=1';
+
+	let products = useAxiosGet(url)
 
 	let content = null;
 
-	useEffect(() => {
-		setProducts({
-			loading: true,
-			data: null,
-			error: false
-		});
-		axios.get(url)
-			.then(response => {
-				setProducts({
-					loading: false,
-					data: response.data,
-					error: false
-				});
-			}).catch(response => {
-			setProducts({
-				loading: false,
-				data: null,
-				error: true
-			});
-		});
-	}, [url])
 
 	if (products.loading) {
 		content = <Loader/>
@@ -43,26 +20,13 @@ function ProjectsList() {
 	}
 
 	if (products.data) {
-		content = {products}
-			// <div className='p-3'>
-			// 	<h1 className='text-2xl font-bold mb-3'>{product.data.name}</h1>
-			// 	<div>
-			// 		<img
-			// 			src={product.data.thumbnail}
-			// 			alt={product.data.name}
-			// 			className='w-3/5'
-			// 		/>
-			// 	</div>
-			// 	<div>
-			// 		<h3 className='font-medium'>Description</h3>
-			// 		<p>{product.data.description}</p>
-			// 	</div>
-			// 	<p className='text-right text-sm text-gray-500'>{product.data.createdAt}</p>
-			// </div>
+		content = products.data.map((product) => {
+			return <Card product={product} />
+		})
 	}
 
 	return (
-		<div>
+		<div className='w-full grid gap-2 xl:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 p-3'>
 			{content}
 		</div>
 	);

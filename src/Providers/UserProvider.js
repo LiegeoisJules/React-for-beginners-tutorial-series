@@ -4,11 +4,14 @@ import fire from "../Config/fire";
 export const UserContext = React.createContext();
 
 const routesPublic = [
-	{url: '/', displayName: 'Home'}];
-const routesPrivate = [
 	{url: '/', displayName: 'Home'},
 	{url: '/real', displayName: 'Real'},
 	{url: '/projects', displayName: 'Project'}];
+const routesPrivate = [
+	{url: '/', displayName: 'Home'},
+	{url: '/real', displayName: 'Real'},
+	{url: '/projects', displayName: 'Project'},
+	{url: '/formAdd', displayName: 'Form add'}];
 
 const UserProvider = ({ children }) => {
 	const [user, setUser] = useState(null);

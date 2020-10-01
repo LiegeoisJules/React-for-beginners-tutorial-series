@@ -14,6 +14,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import UserProvider from "./Providers/UserProvider";
 import PrivateRoute from './Providers/PrivateRoute';
 import error404 from './Views/error404';
+import FormAdd from './Views/FormAdd';
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 						<Route path="/real" component={Real} />
 						<PrivateRoute path="/projects" component={ProjectsList} />
 						<Route path="/project/:id" component={Project} />
+						<Route path='/formAdd' component={FormAdd} />
 						<Route path='/signUp' component={SignUp} />
 						<Route component={error404} />
 					</Switch>

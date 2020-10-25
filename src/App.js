@@ -25,9 +25,9 @@ function App() {
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/real" component={Real} />
-						<PrivateRoute path="/projects" component={ProjectsList} />
+						<Route path="/projects" component={ProjectsList} />
 						<Route path="/project/:id" component={Project} />
-						<Route path='/formAdd' component={FormAdd} />
+						<PrivateRoute path='/formAdd' component={FormAdd} />
 						<Route path='/signUp' component={SignUp} />
 						<Route component={error404} />
 					</Switch>

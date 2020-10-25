@@ -20,8 +20,8 @@ function ProjectsList() {
 	}
 
 	if (products.data) {
-		content = products.data.map((product) => {
-			return <Card product={product} />
+		content = products.data.map((product, key) => {
+			return <Card key={key} product={product} />
 		})
 	}
 
